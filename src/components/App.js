@@ -131,27 +131,6 @@ function App() {
             <span className="url-input-error form__input-error"></span>
           </label>
         </PopupWithForm>
-
-        <template id="template-cards">
-          <article className="card">
-            <button
-              className="card__delete-btn button"
-              aria-label=" Удалить карточку."
-            ></button>
-            <img className="card__image" src="#" alt="" />
-            <div className="card__ctrl-wrapper">
-              <h2 className="card__title"></h2>
-              <div className="card__likes-wrapper">
-                <button
-                  type="button"
-                  className="card__like-btn button"
-                  aria-label=" Поставить лайк."
-                ></button>
-                <span className="card__count-likes">0</span>
-              </div>
-            </div>
-          </article>
-        </template>
       </div>
     </div>
   );
