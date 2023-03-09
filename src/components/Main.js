@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import avatar from '../images/profile__avatar.jpg'
 import api from '../utils/Api'
+import Card from "./Card";
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
 
@@ -25,10 +26,13 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
     api.getDefaultCard()
       .then(data => {
         setCards(data.map(card => ({
+          keys: card._id,
           name: card.name,
-          link: card.link
+          link: card.link,
+          likes: card.likes
         })))
       })
+      .catch(err => console.log(err))
   }, [])
 
   return (
@@ -47,28 +51,14 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
         <button onClick={() => onAddPlace(true)} type="button" className="profile__add-button button" aria-label=" Добавить пост."></button>
       </section>
       <section className="places">
-        {cards.map(card => {
-          return (
-            <article className="card">
-              <button
-                className="card__delete-btn button"
-                aria-label=" Удалить карточку."
-              ></button>
-              <img className="card__image" src={card.link} alt="" />
-              <div className="card__ctrl-wrapper">
-                <h2 className="card__title">{card.name}</h2>
-                <div className="card__likes-wrapper">
-                  <button
-                    type="button"
-                    className="card__like-btn button"
-                    aria-label=" Поставить лайк."
-                  ></button>
-                  <span className="card__count-likes">0</span>
-                </div>
-              </div>
-            </article>
-          )
-        })}
+        {cards.map((card) => (
+          <Card 
+            key= {card.keys}
+            name= {card.name}
+            link = {card.link}
+            likes = {card.likes}
+          />
+        ))}
       </section>
     </main>
   )

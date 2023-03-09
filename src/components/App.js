@@ -9,6 +9,12 @@ function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState()
+
+// todo научиться передавать из дочернего элемента в родительский для вывода автора
+  /* Author = (value) => {
+    setState({ name: value })
+ } */
 
   const closeAllPopups = () => {
     setEditProfilePopupOpen(false)
@@ -16,6 +22,7 @@ function App() {
     setEditAvatarPopupOpen(false)
   }
 
+  
   return (
     <div className="App">
       <div className="page__container">
