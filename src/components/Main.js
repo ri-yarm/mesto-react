@@ -13,7 +13,6 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
   // хук карточек
   const [cards, setCards] = React.useState([])
 
-  // хук useEffect для использования императивного кода
   useEffect(() => {
     api.getUserInfo()
       .then(data => {

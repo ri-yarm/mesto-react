@@ -3,23 +3,21 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
+import ImagePopup from "./ImagePopup";
 
 function App() {
   // хуки состояния попапов(по умолчанию не видно)
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState()
+  const [selectedCard, setSelectedCard] = React.useState({})
 
-// todo научиться передавать из дочернего элемента в родительский для вывода автора
-  /* Author = (value) => {
-    setState({ name: value })
- } */
 
   const closeAllPopups = () => {
     setEditProfilePopupOpen(false)
     setAddPlacePopupOpen(false)
     setEditAvatarPopupOpen(false)
+    setSelectedCard({})
   }
 
   
@@ -32,6 +30,7 @@ function App() {
           onEditProfile={setEditProfilePopupOpen}
           onAddPlace={setAddPlacePopupOpen}
           onEditAvatar={setEditAvatarPopupOpen}
+
         />
         <Footer />
 
@@ -138,6 +137,11 @@ function App() {
             <span className="url-input-error form__input-error"></span>
           </label>
         </PopupWithForm>
+
+        <ImagePopup 
+          card={selectedCard}
+          onClose={closeAllPopups}
+        />
       </div>
     </div>
   );
