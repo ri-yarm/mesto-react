@@ -23,7 +23,7 @@
 
 ***
 
-<!-- * [Ссылка на GitHub Pages](https://ri-yarm.github.io/mesto/) -->
+* [Ссылка на GitHub Pages](https://ri-yarm.github.io/mesto-react/)
 ***
 ### **Требования**
 
