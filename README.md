@@ -1,6 +1,6 @@
 <center>
 
-# Проект: Место
+# Проект: Место *React*
 
 </center>
 
@@ -17,13 +17,13 @@
   * Валидация форм
 * REST Api
 
-### *Приложение разработке*
+### *Приложение находится в разработке*
 
 <img width="400" height="400" src="./src/images/PrewievDevelop.png">
 
 ***
 
-<!-- * [Ссылка на GitHub Pages](https://ri-yarm.github.io/mesto/) -->
+* [Ссылка на GitHub Pages](https://ri-yarm.github.io/mesto-react/)
 ***
 ### **Требования**
 
