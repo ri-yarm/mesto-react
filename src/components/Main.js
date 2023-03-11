@@ -3,7 +3,7 @@ import avatar from '../images/profile__avatar.jpg'
 import api from '../utils/Api'
 import Card from "./Card";
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
+function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 
   // хуки состояний пользователя 
   const [userName, setUserName] = React.useState('Гигачад')
@@ -32,7 +32,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
         })))
       })
       .catch(err => console.log(err))
-  }, [])
+  }, []) // что бы не запускать бесконечный цикл ставим []
 
   return (
     <main className="content">
@@ -50,12 +50,13 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
         <button onClick={() => onAddPlace(true)} type="button" className="profile__add-button button" aria-label=" Добавить пост."></button>
       </section>
       <section className="places">
-        {cards.map((card) => (
+        {cards.map((card) => ( //проходим по массиву полученных карточек и создаём на каждом новый компонент
           <Card 
             key= {card.keys}
             name= {card.name}
             link = {card.link}
             likes = {card.likes}
+            onCardClick = {onCardClick} // передаём set карточки
           />
         ))}
       </section>
