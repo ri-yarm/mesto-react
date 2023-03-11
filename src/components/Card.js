@@ -1,6 +1,7 @@
-const Card = ({name, link, likes}) => {
-  handleCardClick = () => {
+const Card = ({name, link, likes, onCardClick}) => {
 
+  function handleCardClick() {
+    onCardClick({name, link, likes, onCardClick}); //перебрасываем значения в компонент imagePopup
   }
 
   return (

@@ -12,7 +12,6 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({})
 
-
   const closeAllPopups = () => {
     setEditProfilePopupOpen(false)
     setAddPlacePopupOpen(false)
@@ -20,7 +19,6 @@ function App() {
     setSelectedCard({})
   }
 
-  
   return (
     <div className="App">
       <div className="page__container">
@@ -30,8 +28,9 @@ function App() {
           onEditProfile={setEditProfilePopupOpen}
           onAddPlace={setAddPlacePopupOpen}
           onEditAvatar={setEditAvatarPopupOpen}
-
+          onCardClick = {setSelectedCard}
         />
+
         <Footer />
 
         {/* Попап Профиля */}
