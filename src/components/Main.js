@@ -33,10 +33,8 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
     (card) => (
       <Card
         key={card._id}
-        name={card.name}
-        link={card.link}
-        likes={card.likes}
-        onCardClick={onCardClick} // передаём set карточки
+        {...card}
+        onCardClick={onCardClick}
       />
     )
   )
