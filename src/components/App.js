@@ -7,15 +7,20 @@ import ImagePopup from "./ImagePopup";
 
 function App() {
   // хуки состояния попапов(по умолчанию не видно)
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  const [isEditProfile, setEditProfile] = React.useState(false);
+  const [isAddPlace, setAddPlace] = React.useState(false);
+  const [isEditAvatar, setEditAvatar] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({})
 
+  /** Эти функции меняют значения стейта попапов */
+  const isEditProfilePopupOpen = () => setEditProfile(true)
+  const isAddPlacePopupOpen = () => setAddPlace(true)
+  const isEditAvatarPopupOpen = () => setEditAvatar(true)
+
   const closeAllPopups = () => {
-    setEditProfilePopupOpen(false)
-    setAddPlacePopupOpen(false)
-    setEditAvatarPopupOpen(false)
+    setEditProfile(false)
+    setAddPlace(false)
+    setEditAvatar(false)
     setSelectedCard({})
   }
 
@@ -25,9 +30,9 @@ function App() {
         <Header />
 
         <Main
-          onEditProfile={setEditProfilePopupOpen}
-          onAddPlace={setAddPlacePopupOpen}
-          onEditAvatar={setEditAvatarPopupOpen}
+          onEditProfile={isEditProfilePopupOpen}
+          onAddPlace={isAddPlacePopupOpen}
+          onEditAvatar={isEditAvatarPopupOpen}
           onCardClick = {setSelectedCard}
         />
 
@@ -38,7 +43,7 @@ function App() {
           name="profile"
           title="Редактировать профиль"
           buttonText="Сохранить"
-          isOpen={isEditProfilePopupOpen}
+          isOpen={isEditProfile}
           onClose={closeAllPopups}
         >
           <label className="form__label">
@@ -74,7 +79,7 @@ function App() {
           name="card"
           title="Новое Место"
           buttonText="Сохранить"
-          isOpen={isAddPlacePopupOpen}
+          isOpen={isAddPlace}
           onClose={closeAllPopups}
         >
           <label className="form__label">
@@ -108,7 +113,7 @@ function App() {
           name="avatar"
           title="Обновить аватар"
           buttonText="Сохранить"
-          isOpen={isEditAvatarPopupOpen}
+          isOpen={isEditAvatar}
           onClose={closeAllPopups}
         >
           <label className="form__label">

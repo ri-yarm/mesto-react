@@ -1,7 +1,8 @@
-const Card = ({name, link, likes, onCardClick}) => {
+const Card = ({ name, link, likes, onCardClick }) => {
 
+  /** функция перебравсывает пропсы в компонент imagePopup */
   function handleCardClick() {
-    onCardClick({name, link, likes, onCardClick}); //перебрасываем значения в компонент imagePopup
+    onCardClick({ name, link });
   }
 
   return (
@@ -10,7 +11,12 @@ const Card = ({name, link, likes, onCardClick}) => {
         className="card__delete-btn button"
         aria-label=" Удалить карточку."
       ></button>
-      <img onClick={handleCardClick} className="card__image" src={link} alt={` ${name}.`} />
+      <img
+        onClick={handleCardClick}
+        className="card__image"
+        src={link}
+        alt={` ${name}.`}
+      />
       <div className="card__ctrl-wrapper">
         <h2 className="card__title">{name}</h2>
         <div className="card__likes-wrapper">
@@ -23,7 +29,7 @@ const Card = ({name, link, likes, onCardClick}) => {
         </div>
       </div>
     </article>
-  )
-}
+  );
+};
 
 export default Card;
