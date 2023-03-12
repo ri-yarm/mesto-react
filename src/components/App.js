@@ -7,20 +7,20 @@ import ImagePopup from "./ImagePopup";
 
 function App() {
   // хуки состояния попапов(по умолчанию не видно)
-  const [isEditProfile, setEditProfile] = React.useState(false);
-  const [isAddPlace, setAddPlace] = React.useState(false);
-  const [isEditAvatar, setEditAvatar] = React.useState(false);
+  const [isEditProfilePopupOpened, setIsEditProfilePopupOpened] = React.useState(false);
+  const [isAddPlacePopupOpened, setAddPlacePopupOpened] = React.useState(false);
+  const [isEditAvatarPopupOpened, setEditAvatarPopupOpened] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({})
 
   /** Эти функции меняют значения стейта попапов */
-  const isEditProfilePopupOpen = () => setEditProfile(true)
-  const isAddPlacePopupOpen = () => setAddPlace(true)
-  const isEditAvatarPopupOpen = () => setEditAvatar(true)
+  const openEditProfilePopup = () => setIsEditProfilePopupOpened(true)
+  const openAddPlacePopup = () => setAddPlacePopupOpened(true)
+  const openEditAvatarPopup = () => setEditAvatarPopupOpened(true)
 
   const closeAllPopups = () => {
-    setEditProfile(false)
-    setAddPlace(false)
-    setEditAvatar(false)
+    setIsEditProfilePopupOpened(false)
+    setAddPlacePopupOpened(false)
+    setEditAvatarPopupOpened(false)
     setSelectedCard({})
   }
 
@@ -30,9 +30,9 @@ function App() {
         <Header />
 
         <Main
-          onEditProfile={isEditProfilePopupOpen}
-          onAddPlace={isAddPlacePopupOpen}
-          onEditAvatar={isEditAvatarPopupOpen}
+          onEditProfile={openEditProfilePopup}
+          onAddPlace={openAddPlacePopup}
+          onEditAvatar={openEditAvatarPopup}
           onCardClick = {setSelectedCard}
         />
 
@@ -43,7 +43,7 @@ function App() {
           name="profile"
           title="Редактировать профиль"
           buttonText="Сохранить"
-          isOpen={isEditProfile}
+          isOpen={isEditProfilePopupOpened}
           onClose={closeAllPopups}
         >
           <label className="form__label">
@@ -79,7 +79,7 @@ function App() {
           name="card"
           title="Новое Место"
           buttonText="Сохранить"
-          isOpen={isAddPlace}
+          isOpen={isAddPlacePopupOpened}
           onClose={closeAllPopups}
         >
           <label className="form__label">
@@ -113,7 +113,7 @@ function App() {
           name="avatar"
           title="Обновить аватар"
           buttonText="Сохранить"
-          isOpen={isEditAvatar}
+          isOpen={isEditAvatarPopupOpened}
           onClose={closeAllPopups}
         >
           <label className="form__label">

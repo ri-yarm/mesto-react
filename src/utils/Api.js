@@ -6,7 +6,7 @@ class Api {
     this._key = config.headers;
   }
 
-  _GetResponseData = (res, about) => {
+  _getResponseData = (res, about) => {
     return res.ok ? res.json() : Promise.reject(`${about}: ${res.status}`);
   };
 
@@ -14,7 +14,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       headers: this._key,
     }).then((res) =>
-      this._GetResponseData(res, "Данные о пользователе не загрузились")
+      this._getResponseData(res, "Данные о пользователе не загрузились")
     );
   };
 
@@ -27,7 +27,7 @@ class Api {
         about: data.about,
       }),
     }).then((res) =>
-      this._GetResponseData(res, "Данные о пользователе не отправились!")
+      this._getResponseData(res, "Данные о пользователе не отправились!")
     );
   };
 
@@ -38,13 +38,13 @@ class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-    }).then((res) => this._GetResponseData(res, "Новый аватар не сохранён!"));
+    }).then((res) => this._getResponseData(res, "Новый аватар не сохранён!"));
   };
 
   getDefaultCard = () => {
     return fetch(`${this._url}/cards`, {
       headers: this._key,
-    }).then((res) => this._GetResponseData(res, "Не удалось обновить ленту!"));
+    }).then((res) => this._getResponseData(res, "Не удалось обновить ленту!"));
   };
 
   postNewPhoto = (data) => {
@@ -55,28 +55,28 @@ class Api {
         name: data.name,
         link: data.link,
       }),
-    }).then((res) => this._GetResponseData(res, "Новый пост не загрузился!"));
+    }).then((res) => this._getResponseData(res, "Новый пост не загрузился!"));
   };
 
   deleteCard = (thisCard) => {
     return fetch(`${this._url}/cards/${thisCard}`, {
       method: "DELETE",
       headers: this._key,
-    }).then((res) => this._GetResponseData(res, "Не удалось удалить карту!"));
+    }).then((res) => this._getResponseData(res, "Не удалось удалить карту!"));
   };
 
   likeCard = (thisCard) => {
     return fetch(`${this._url}/cards/${thisCard}/likes`, {
       method: "PUT",
       headers: this._key,
-    }).then((res) => this._GetResponseData(res, "Не удалось поставить лайк!"));
+    }).then((res) => this._getResponseData(res, "Не удалось поставить лайк!"));
   };
 
   unlikeCard = (thisCard) => {
     return fetch(`${this._url}/cards/${thisCard}/likes`, {
       method: "DELETE",
       headers: this._key,
-    }).then((res) => this._GetResponseData(res, "Не удалось удалить лайк!"));
+    }).then((res) => this._getResponseData(res, "Не удалось удалить лайк!"));
   };
 }
 
